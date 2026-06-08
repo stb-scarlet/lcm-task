@@ -14,7 +14,7 @@ function lcm(a, b) {
     return (a / gcd(a, b)) * b;
 }
 
-app.get('/rayimbekoveldar7_gmail_com', (req, res) => {
+function handle(req, res) {
     const x = req.query.x;
     const y = req.query.y;
 
@@ -30,7 +30,10 @@ app.get('/rayimbekoveldar7_gmail_com', (req, res) => {
     } else {
         res.send(String(lcm(xNum, yNum)));
     }
-});
+}
+
+app.get('/rayimbekoveldar7_gmail_com', handle);
+app.get('/', handle);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
