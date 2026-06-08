@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 function gcd(a, b) {
-    while (b > 0) {
+    while (b > 0n) {
         let temp = b;
         b = a % b;
         a = temp;
@@ -18,17 +18,15 @@ function handle(req, res) {
     const x = req.query.x;
     const y = req.query.y;
 
-    const xNum = Number(x);
-    const yNum = Number(y);
-
-    const isNatural = n => Number.isInteger(n) && n > 0;
+    const isNatural = (n) => /^\d+$/.test(n) && BigInt(n) > 0n;
 
     res.setHeader('Content-Type', 'text/plain');
 
-    if (!isNatural(xNum) || !isNatural(yNum)) {
+    if (!isNatural(x) || !isNatural(y)) {
         res.send('NaN');
     } else {
-        res.send(String(lcm(xNum, yNum)));
+        const result = lcm(BigInt(x), BigInt(y));
+        res.send(result.toString());
     }
 }
 
