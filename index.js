@@ -6,7 +6,7 @@ function gcd(a, b) {
 }
 
 function lcm(a, b) {
-    return (a % b) / gcd(a, b);
+    return (a * b) / gcd(a, b);
 }
 
 const server = http.createServer((req, res) => {
