@@ -12,7 +12,7 @@ function lcm(a, b) {
 const server = http.createServer((req, res) => {
     const parsed = url.parse(req.url, true);
 
-    if (!parsed.pathname.includes('rayimbekoveldar7_gmail.com')) {
+    if (!parsed.pathname.includes('rayimbekoveldar7_gmail_com')) {
         res.writeHead(404);
         res.end('Not found');
         return;
